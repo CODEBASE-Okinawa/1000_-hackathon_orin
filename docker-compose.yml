@@ -17,6 +17,8 @@ services:
     command: bash -c 'bin/setup && bin/rails s -b 0.0.0.0'
   webpacker:
     <<: *app
+    depends_on:
+      - app
     command: bin/webpack-dev-server
     ports:
       - 3035:3035
