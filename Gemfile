@@ -63,5 +63,5 @@ end
 
 group :development, :test do
   gem "ruby-debug-ide"
-  gem "debase"
+  gem "debase", '~> 0.2.5.beta2'
 end
