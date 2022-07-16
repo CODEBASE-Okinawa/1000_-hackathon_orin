@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>HackathonOrin</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+<head>
+  <title>HackathonOrin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5">
-      <%= yield %>
-    </main>
-  </body>
+<body>
+<header>
+  <% if current_user %>
+    <%= button_to "ログアウト", signout_path, method: :delete, class: "text-blue-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" %>
+    <%= current_user.email %>
+  <% end %>
+</header>
+<main class="container mx-auto mt-28 px-5">
+  <% flash.each do |message_type, message| %>
+    <% if message_type == 'danger' %>
+      <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"><%= message %></div>
+    <% elsif message_type == 'success' %>
+      <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"><%= message %></div>
+    <% end %>
+  <% end %>
+  <%= yield %>
+</main>
+</body>
 </html>
