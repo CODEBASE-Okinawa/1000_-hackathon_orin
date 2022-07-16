@@ -1,4 +1,11 @@
 <div>
+  <%= form_with(model: @task, method: :post, local: true) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.submit "作成" %>
+  <% end %>
+</div>
+<div>
   <h2>未着手</h2>
   <ul>
     <% @tasks_not_yet.each do |y| %>
