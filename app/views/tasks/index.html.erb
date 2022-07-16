@@ -1,16 +1,12 @@
-
-<h1>タスク一覧</h1>
-<br>
-<p>終了</p><br>
-<% @tasks.each do |t| %>
-  <%= t.title %><br>
-<% end %>
-
-<p>未着手</p><br>
-<% @yettasks.each do |y| %>
-  <%= y.title %><br>
-<% end %>
-
-
-
-
+<div>
+  <p>終了</p><br>
+  <% @tasks.each do |t| %>
+    <%= t.title %><br>
+  <% end %>
+</div>
+<div>
+  <p>未着手</p><br>
+  <% @yettasks.each do |y| %>
+    <%= y.title %><br>
+  <% end %>
+</div>
