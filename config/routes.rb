@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  resources :tasks
+  get 'users/new'
+  get 'users/create'
+  get 'users/show'
+  get 'users/edit'
+  get 'users/update'
   root 'application#hello'
+
+  resources :tasks
+  get '/signup', to: 'users#new'
+  resources :users
 end
