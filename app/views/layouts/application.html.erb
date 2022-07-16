@@ -14,7 +14,8 @@
 <body>
 <header>
   <% if current_user %>
-    <%= button_to "ログアウト", signout_path, method: :delete %>
+    <%= button_to "ログアウト", signout_path, method: :delete, class: "text-blue-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" %>
+    <%= current_user.email %>
   <% end %>
 </header>
 <main class="container mx-auto mt-28 px-5">
