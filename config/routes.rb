@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  root 'tasks#index'
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
-  root 'application#hello'
 
   resources :tasks
 
