@@ -1,12 +1,8 @@
 class TasksController < ApplicationController
   def index
+    @task = Task.new
     @tasks_not_yet = Task.where(complete: false)
     @tasks_done = Task.where(complete: true)
-  end
-
-  def new
-    @task = Task.new
-    render 'index'
   end
 
   def create
