@@ -1,12 +1,16 @@
 <div>
-  <h2>未着手</h2><br>
-  <% @tasks_not_yet.each do |y| %>
-    <%= y.title %><br>
-  <% end %>
+  <h2>未着手</h2>
+  <ul>
+    <% @tasks_not_yet.each do |y| %>
+      <li><%= y.title %></li>
+    <% end %>
+  </ul>
 </div>
 <div>
-  <h2>終了</h2><br>
-  <% @tasks_done.each do |t| %>
-    <%= t.title %><br>
-  <% end %>
+  <h2>終了</h2>
+  <ul>
+    <% @tasks_done.each do |t| %>
+      <li><%= t.title %></li>
+    <% end %>
+  </ul>
 </div>
