@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'tasks#index'
+  root 'sessions#new'
 
   post 'tasks/:id/toggle', to: 'tasks#toggle'
   resources :tasks
