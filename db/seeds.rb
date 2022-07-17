@@ -4,8 +4,13 @@ puts 'start seed'
 end
 puts 'created users'
 
-10.times do |i|
-  list = List.create!(title: "タスクリスト #{i + 1}")
+10.times do |n|
+  Project.create!(title: "プロジェクト#{n + 1}")
+end
+puts 'created project'
+
+30.times do |i|
+  list = List.create!(title: "タスクリスト #{i + 1}", project_id: (1..10).to_a.sample)
   20.times do |j|
     list.tasks.create!(title: "タスク#{ j + 1 + (i * 20) }", complete: [true, false].sample)
   end
@@ -16,11 +21,6 @@ puts 'created lists and tasks'
   Comment.create!(description: "コメント#{n + 1}", task_id: (1..20).to_a.sample, user_id: (1..10).to_a.sample)
 end
 puts 'created comments'
-
-10.times do |n|
-  Project.create!(title: "プロジェクト#{n + 1}")
-end
-puts 'created project'
 
 10.times do |n|
   project = Project.find(n + 1)

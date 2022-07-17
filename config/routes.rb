@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  get 'project/index'
-  get 'project/show'
   root 'sessions#new'
 
   post 'tasks/:id/toggle', to: 'tasks#toggle'
   resources :tasks
 
   get '/signup', to: 'users#new'
+  post 'user/update', to: 'users#update_from_project'
   resources :users
 
   get '/signin', to: 'sessions#new'
@@ -16,5 +15,8 @@ Rails.application.routes.draw do
 
   resources :comments, only: %i(create)
 
+  post 'list/update', to: 'lists#update_from_project'
   resources :lists
+
+  resources :projects, only: %i(index create show)
 end

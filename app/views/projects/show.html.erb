@@ -1,0 +1,36 @@
+<div class="grid grid-cols-2">
+  <div>
+    <%= form_with url: list_update_path do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.hidden_field :id, :value => params[:id] %>
+      <%= f.submit "追加" %>
+    <% end %>
+    <h2>タスクリスト一覧</h2>
+    <ul>
+      <% @project.lists.each do |list| %>
+        <li class="pt-5 text-blue-500">
+          <%= link_to(list.title, list_path(list)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <%= form_with url: user_update_path do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.hidden_field :id, :value => params[:id] %>
+      <%= f.submit "追加" %>
+    <% end %>
+    <h2>ユーザー一覧</h2>
+    <ul>
+      <% @project.users.each do |user| %>
+        <li class="pt-5 text-blue-500">
+          <%= link_to(user.name, user_path(user)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

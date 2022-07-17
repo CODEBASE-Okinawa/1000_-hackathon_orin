@@ -1,0 +1,18 @@
+<div>
+  <%= form_with(model: @project, local: true) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.submit "作成" %>
+  <% end %>
+  <h1 class="text-xl">プロジェクト一覧</h1>
+  <div>
+    <ul>
+      <% @projects.each do |project| %>
+        <li class="pt-5 pl-3 text-blue-500">
+          <%= link_to(project.title, project_path(project)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
