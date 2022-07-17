@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
 
+  post 'tasks/:id/toggle', to: 'tasks#toggle'
   resources :tasks
 
   get '/signup', to: 'users#new'

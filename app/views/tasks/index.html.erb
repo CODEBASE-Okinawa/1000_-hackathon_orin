@@ -1,3 +1,4 @@
+<div><%= link_to('更新', tasks_path, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded') %></div>
 <div>
   <%= form_with(model: @task, local: true) do |f| %>
     <%= f.label :title %>
@@ -8,17 +9,29 @@
 </div>
 <div>
   <h2>未着手</h2>
-  <ul>
-    <% @tasks_not_yet.each do |y| %>
-      <li><%= y.title %></li>
+  <div data-controller="tasks">
+    <% @tasks_not_yet.each do |task| %>
+      <%= form_with(model: task) do |f| %>
+        <%= f.check_box :complete, data: {
+          id: task.id,
+          action: "tasks#toggle"
+        } %>
+        <%= task.title %>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 </div>
-<div>
+<div class="pt-5">
   <h2>終了</h2>
-  <ul>
-    <% @tasks_done.each do |t| %>
-      <li><%= t.title %></li>
+  <div data-controller="tasks">
+    <% @tasks_done.each do |task| %>
+      <%= form_with(model: task) do |f| %>
+        <%= f.check_box :complete, checked: true, data: {
+          id: task.id,
+          action: "tasks#toggle"
+        } %>
+        <%= task.title %>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 </div>

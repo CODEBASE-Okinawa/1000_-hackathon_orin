@@ -10,8 +10,23 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def toggle
+    @task = Task.find(params[:id])
+    bool = request.body.read
+    merge_params(bool)
+    @task.update(complete: params[:complete])
+  end
+
   private
-    def task_params
-      params.require(:task).permit(:title)
+  def task_params
+    params.require(:task).permit(:title)
+  end
+
+  def merge_params(bool)
+    if bool == "false"
+      params.merge!(complete: false)
+    else
+      params.merge!(complete: true)
     end
+  end
 end
