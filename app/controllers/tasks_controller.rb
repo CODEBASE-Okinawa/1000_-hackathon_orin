@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :redirect_signin
   def index
     @task = Task.new
     @tasks_not_yet = Task.where(complete: false)

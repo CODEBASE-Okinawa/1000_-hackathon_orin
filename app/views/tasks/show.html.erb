@@ -15,9 +15,10 @@
 </div>
 
 <div>
-  <%= form_with(scope: @comment, url: new_comment_path, local: true) do |f| %>
+  <%= form_with(model: @comment, local: true) do |f| %>
     <%= f.text_field :description %>
 
+    <%= f.hidden_field :id, :value => params[:id] %>
     <%= f.submit "コメント", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" %>
   <% end %>
 </div>
