@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :tasks
 
   get '/signup', to: 'users#new'
-  post 'user/update', to: 'users#update_from_project'
+  post '/user/update', to: 'users#update_from_project'
   resources :users
 
   get '/signin', to: 'sessions#new'
