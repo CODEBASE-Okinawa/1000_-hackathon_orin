@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
+  get 'lists/index'
+  get 'lists/create'
+  get 'lists/show'
+
   post 'tasks/:id/toggle', to: 'tasks#toggle'
   resources :tasks
 
@@ -13,4 +17,6 @@ Rails.application.routes.draw do
   resources :sessions, only: %i(new create destroy)
 
   resources :comments, only: %i(create)
+
+  resources :lists
 end

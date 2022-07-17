@@ -1,0 +1,15 @@
+<div><h1>リスト一覧</h1></div>
+<div>
+  <%= form_with(model: @list, local: true) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.submit "作成" %>
+  <% end %>
+</div>
+<div>
+  <% @lists.each do |l| %>
+    <li><%= link_to l.title, list_path(l) %></li>
+  <% end %>
+</div>
+
