@@ -10,6 +10,11 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def show
+    @task = Task.find(params[:id])
+    @comment = Comment.new
+  end
+
   def toggle
     @task = Task.find(params[:id])
     bool = request.body.read
