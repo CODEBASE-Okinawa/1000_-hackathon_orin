@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
+      UserProject.create!(user_id: current_user.id, project_id: @project.id)
       flash[:success] = "プロジェクトの作成に成功しました。"
       redirect_to project_path(@project)
     else
