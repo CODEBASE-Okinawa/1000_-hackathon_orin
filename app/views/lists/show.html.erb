@@ -9,17 +9,33 @@
 </div>
 
 <div>
-  <% @list.tasks.each do |task| %>
-    <% if task.complete == false %>
-      <li><%= task.title %></li>
+  <div data-controller="tasks">
+    <% @list.tasks.each do |task| %>
+      <% if task.complete == false %>
+        <%= form_with(model: task) do |f| %>
+          <%= f.check_box :complete, data: {
+            id: task.id,
+            action: "tasks#toggle"
+          } %>
+          <%= link_to(task.title, task_path(task)) %>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-<div>
-  <h1>終了済み</h1>
-  <% @list.tasks.each do |task| %>
-    <% if task.complete == true %>
-      <li><%= task.title %></li>
-    <% end %>
-  <% end %>
+  </div>
+  <div>
+    <h1>終了済み</h1>
+    <div data-controller="tasks">
+      <% @list.tasks.each do |task| %>
+        <% if task.complete == true %>
+          <%= form_with(model: task) do |f| %>
+            <%= f.check_box :complete, data: {
+              id: task.id,
+              action: "tasks#toggle"
+            } %>
+            <%= link_to(task.title, task_path(task)) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

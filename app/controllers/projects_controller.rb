@@ -1,7 +1,10 @@
 class ProjectsController < ApplicationController
+  before_action :redirect_signin
+
   def index
     @project = Project.new
-    @projects = Project.all
+    projects_ids = UserProject.where(user_id: current_user.id).pluck(:project_id)
+    @projects = Project.where(id: projects_ids)
   end
 
   def create
@@ -17,6 +20,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @tasks = Task.all
   end
 
   private
