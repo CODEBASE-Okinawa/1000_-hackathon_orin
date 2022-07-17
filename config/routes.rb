@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'project/index'
+  get 'project/show'
   root 'sessions#new'
 
   post 'tasks/:id/toggle', to: 'tasks#toggle'
