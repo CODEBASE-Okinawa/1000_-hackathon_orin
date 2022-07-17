@@ -1,0 +1,25 @@
+<div>
+  <%= form_with(model: @task, local: true) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.hidden_field :id, :value => params[:id] %>
+    <%= f.submit "作成" %>
+  <% end %>
+</div>
+
+<div>
+  <% @list.tasks.each do |task| %>
+    <% if task.complete == false %>
+      <li><%= task.title %></li>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <h1>終了済み</h1>
+  <% @list.tasks.each do |task| %>
+    <% if task.complete == true %>
+      <li><%= task.title %></li>
+    <% end %>
+  <% end %>
+</div>

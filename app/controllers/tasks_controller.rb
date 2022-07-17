@@ -7,8 +7,13 @@ class TasksController < ApplicationController
   end
 
   def create
-    Task.create(task_params)
-    redirect_to tasks_path
+    @list = List.find(params[:task][:id].to_i)
+    task = Task.create(
+      title: params[:task][:title],
+      list_id: @list.id
+    )
+
+    redirect_to list_path(@list)
   end
 
   def show
