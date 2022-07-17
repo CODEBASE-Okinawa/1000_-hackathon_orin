@@ -18,7 +18,9 @@ export default class extends Controller {
             }
         )
             .then(response => response.json())
-            .then(location.reload())
+            .then(setTimeout(() => {
+                location.reload()
+            }, 50))
             .catch((error) => {
                 console.error('Error', error);
             });
