@@ -4,7 +4,6 @@ export default class extends Controller {
     toggle(e) {
         const id = e.target.dataset.id
         const csrfToken = document.querySelector("[name='csrf-token']").content
-        const params = {}
 
         fetch(`/tasks/${id}/toggle`, {
                 method: 'POST',
