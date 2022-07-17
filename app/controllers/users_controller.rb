@@ -39,15 +39,14 @@ class UsersController < ApplicationController
 
   def update_from_project
     user = User.find_by_email(params[:email])
-    user_project = UserProject.find(user.id)
-    if user_project
-      user_project.update(project_id: params[:id])
-
+    project_id = params[:id]
+    if user && project_id
+      UserProject.create(user_id: user.id, project_id: project_id)
       flash[:success] = "ユーザーの更新に成功しました。"
-      redirect_to project_path(params[:id])
+      redirect_to project_path(project_id)
     else
       flash[:danger] = "ユーザーの更新に失敗しました。"
-      redirect_to project_path(params[:id])
+      redirect_to project_path(project_id)
     end
   end
 
