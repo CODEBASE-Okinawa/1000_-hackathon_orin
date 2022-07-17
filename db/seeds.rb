@@ -24,7 +24,8 @@ puts 'created comments'
 
 10.times do |n|
   project = Project.find(n + 1)
-  UserProject.create!(user_id: (1..50).to_a.sample, project_id: project.id)
+  UserProject.create!(user_id: 1, project_id: project.id)
+  UserProject.create!(user_id: (2..20).to_a.sample, project_id: project.id)
 end
 puts 'created user_projects'
 puts 'created seed'
