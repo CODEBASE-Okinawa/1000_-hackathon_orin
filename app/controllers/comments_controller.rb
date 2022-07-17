@@ -14,10 +14,4 @@ class CommentsController < ApplicationController
       redirect_to task_path(@task)
     end
   end
-
-  def update
-  end
-
-  def destroy
-  end
 end

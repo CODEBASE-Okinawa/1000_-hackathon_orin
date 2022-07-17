@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
   resources :sessions, only: %i(new create destroy)
 
-  resources :comments, only: %i(new create show update)
+  resources :comments, only: %i(create)
 end
