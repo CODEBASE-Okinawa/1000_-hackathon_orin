@@ -9,17 +9,17 @@
 </div>
 
 <div>
-  <% @list.tasks.each do |t| %>
-    <% if t.complete == false %>
-      <li><%= t.title %></li>
+  <% @list.tasks.each do |task| %>
+    <% if task.complete == false %>
+      <li><%= task.title %></li>
     <% end %>
   <% end %>
 </div>
 <div>
   <h1>終了済み</h1>
-  <% @list.tasks.each do |t| %>
-    <% if t.complete == true %>
-      <li><%= t.title %></li>
+  <% @list.tasks.each do |task| %>
+    <% if task.complete == true %>
+      <li><%= task.title %></li>
     <% end %>
   <% end %>
 </div>

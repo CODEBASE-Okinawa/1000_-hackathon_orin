@@ -1,4 +1,4 @@
-<div><h1>リスト一覧</h1></div>
+<h1>リスト一覧</h1>
 <div>
   <%= form_with(model: @list, local: true) do |f| %>
     <%= f.label :title %>
@@ -8,8 +8,8 @@
   <% end %>
 </div>
 <div>
-  <% @lists.each do |l| %>
-    <li><%= link_to l.title, list_path(l) %></li>
+  <% @lists.each do |list| %>
+    <li><%= link_to list.title, list_path(list) %></li>
   <% end %>
 </div>
 

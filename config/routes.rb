@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
-  get 'lists/index'
-  get 'lists/create'
-  get 'lists/show'
-
   post 'tasks/:id/toggle', to: 'tasks#toggle'
   resources :tasks
 
