@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :redirect_signin
   def index
     @task = Task.new
     @tasks_not_yet = Task.where(complete: false)
@@ -8,6 +9,11 @@ class TasksController < ApplicationController
   def create
     Task.create(task_params)
     redirect_to tasks_path
+  end
+
+  def show
+    @task = Task.find(params[:id])
+    @comment = Comment.new
   end
 
   def toggle

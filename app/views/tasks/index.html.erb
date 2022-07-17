@@ -15,7 +15,7 @@
           id: task.id,
           action: "tasks#toggle"
         } %>
-        <%= task.title %>
+        <%= link_to(task.title, task_path(task)) %>
       <% end %>
     <% end %>
   </div>
@@ -29,7 +29,7 @@
           id: task.id,
           action: "tasks#toggle"
         } %>
-        <%= task.title %>
+        <%= link_to(task.title, task_path(task)) %>
       <% end %>
     <% end %>
   </div>

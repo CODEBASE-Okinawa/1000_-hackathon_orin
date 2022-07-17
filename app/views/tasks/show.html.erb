@@ -1,0 +1,24 @@
+<h2 class="text-xl "><%= @task.title %></h2>
+<div class="pt-5">
+  <% @task.comments.each do |comment| %>
+    <div class="pt-3">
+      <span>user: </span>
+      <span>
+        <%= comment.user.name %>
+    </span>
+    </div>
+    <div>
+      <span>comment: </span>
+      <span><%= comment.description %></span>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with(model: @comment, local: true) do |f| %>
+    <%= f.text_field :description %>
+
+    <%= f.hidden_field :id, :value => params[:id] %>
+    <%= f.submit "コメント", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" %>
+  <% end %>
+</div>
