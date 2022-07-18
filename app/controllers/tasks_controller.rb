@@ -21,6 +21,11 @@ class TasksController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    Task.find(params[:id]).destroy
+    redirect_to list_path(params[:id])
+  end
+
   def toggle
     @task = Task.find(params[:id])
     bool = request.body.read

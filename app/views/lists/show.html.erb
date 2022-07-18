@@ -22,6 +22,9 @@
             <span class="pt-5 text-blue-500">
               <%= link_to(task.title, task_path(task)) %>
             </span>
+            <span class="text-red-500">
+              <%= link_to('削除', "/tasks/#{task.id}", data: {turbo_method: :delete}) %>
+            </span>
           <% end %>
         <% end %>
       <% end %>
