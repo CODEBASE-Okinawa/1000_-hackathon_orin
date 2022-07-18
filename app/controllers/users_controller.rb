@@ -17,10 +17,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def profile
+    @user = User.find(current_user.id)
+    render 'show'
+  end
+
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
     if logged_in? && current_user == @user
-      @user = User.find(params[:id])
+      @user = User.find(current_user.id)
     else
       redirect_to current_user
     end

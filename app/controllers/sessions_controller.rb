@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       flash[:success] = 'ログインに成功しました。'
-      redirect_to user
+      redirect_to profile_path
     else
       flash[:danger] = 'メールアドレス、またはパスワードが違います。'
       redirect_to signin_path
