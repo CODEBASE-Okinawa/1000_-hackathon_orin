@@ -15,7 +15,7 @@
 <header>
   <% if current_user %>
     <div class="flex">
-      <%= link_to("#{current_user.name}", user_path(current_user), class: "px-5") %>
+      <%= link_to("#{current_user.name}", profile_path, class: "px-5") %>
       <%= link_to('プロジェクト一覧', projects_path, class: "text-blue-500 px-5") %>
       <%= button_to "ログアウト", signout_path, method: :delete, class: "text-blue-500 inline px-5" %>
     </div>

@@ -24,10 +24,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
-    if logged_in? && current_user == @user
-      @user = User.find(current_user.id)
-    else
-      redirect_to current_user
+    unless @user && logged_in?
+      redirect_to signin_path
     end
   end
 
