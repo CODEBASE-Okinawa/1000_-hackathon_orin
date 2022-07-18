@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @not_have_user_emails = User.where.not(id: @project.user_ids).map(&:email)
   end
 
   private

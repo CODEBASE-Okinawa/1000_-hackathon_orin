@@ -15,13 +15,14 @@ class ListsController < ApplicationController
   end
 
   def update_from_project
-    if (list = List.find_by_title(params[:title]))
+    list = List.find_or_create_by(title: params[:title])
+    if list
       list.update(project_id: params[:id])
 
-      flash[:success] = "リストの更新に成功しました。"
+      flash[:success] = "リストの追加に成功しました。"
       redirect_to project_path(params[:id])
     else
-      flash[:danger] = "リストの更新に失敗しました。"
+      flash[:danger] = "リストの追加に失敗しました。"
       redirect_to project_path(params[:id])
     end
   end

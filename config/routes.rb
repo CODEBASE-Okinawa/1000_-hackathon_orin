@@ -6,16 +6,15 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   post '/user/update', to: 'users#update_from_project'
-  resources :users
+  resources :users, except: %i(new)
 
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
-  resources :sessions, only: %i(new create destroy)
 
   resources :comments, only: %i(create)
 
-  post 'list/update', to: 'lists#update_from_project'
+  post '/list/update', to: 'lists#update_from_project'
   resources :lists
 
   resources :projects, only: %i(index create show)
