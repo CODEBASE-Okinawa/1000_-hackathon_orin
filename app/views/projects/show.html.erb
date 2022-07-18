@@ -28,7 +28,7 @@
       <ul>
         <% @project.users.each do |user| %>
           <li class="pt-5 text-blue-500">
-            <%= link_to(user.name, user_path(user)) %>
+            <%= link_to(user.name, profile_path) %>
           </li>
         <% end %>
       </ul>
