@@ -1,41 +1,48 @@
 <div>
-  <%= form_with(model: @task, local: true) do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <h2 class="text-3xl pb-8"><%= @list.title %></h2>
+  <div>
+    <%= form_with(model: @task, local: true) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
 
-    <%= f.hidden_field :id, :value => params[:id] %>
-    <%= f.submit "作成" %>
-  <% end %>
-</div>
-
-<div>
-  <div data-controller="tasks">
-    <% @list.tasks.each do |task| %>
-      <% if task.complete == false %>
-        <%= form_with(model: task) do |f| %>
-          <%= f.check_box :complete, data: {
-            id: task.id,
-            action: "tasks#toggle"
-          } %>
-          <%= link_to(task.title, task_path(task)) %>
-        <% end %>
-      <% end %>
+      <%= f.hidden_field :id, :value => params[:id] %>
+      <%= f.submit "作成" %>
     <% end %>
   </div>
-  <div>
-    <h1>終了済み</h1>
+
+  <div class="pt-8">
     <div data-controller="tasks">
       <% @list.tasks.each do |task| %>
-        <% if task.complete == true %>
+        <% if task.complete == false %>
           <%= form_with(model: task) do |f| %>
             <%= f.check_box :complete, data: {
               id: task.id,
               action: "tasks#toggle"
             } %>
-            <%= link_to(task.title, task_path(task)) %>
+            <span class="pt-5 text-blue-500">
+              <%= link_to(task.title, task_path(task)) %>
+            </span>
           <% end %>
         <% end %>
       <% end %>
+    </div>
+    <div class="pt-6">
+      <h1>終了済み</h1>
+      <div data-controller="tasks">
+        <% @list.tasks.each do |task| %>
+          <% if task.complete == true %>
+            <%= form_with(model: task) do |f| %>
+              <%= f.check_box :complete, data: {
+                id: task.id,
+                action: "tasks#toggle"
+              } %>
+              <span class="pt-5 text-blue-500">
+                <%= link_to(task.title, task_path(task), class: 'pt-3') %>
+              </span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
