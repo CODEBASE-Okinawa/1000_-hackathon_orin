@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :tasks
 
   get '/signup', to: 'users#new'
+  get '/profile', to: 'users#profile'
+  get '/profile/edit', to: 'users#edit'
   post '/user/update', to: 'users#update_from_project'
-  resources :users, except: %i(new)
+  resources :users, except: %i(new edit)
 
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
